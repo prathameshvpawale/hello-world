@@ -1,9 +1,17 @@
-export default function ProductDetails({ params, }: {
-    params: { productid: string }
-}) 
+import { Metadata } from "next";
 
-{
-    return <h1> first blog  {params.productid}
+type Props = {
+    params: {
+        productid: string;
+    };
+};
 
-    </h1>
+export const generateMetadata = ({ params }: Props): Metadata => {
+    return {
+        title: `Product ${params.productid}`
+    };
+};
+
+export default function ProductDetails({ params }: Props) {
+    return <h1>Product {params.productid}</h1>;
 }
